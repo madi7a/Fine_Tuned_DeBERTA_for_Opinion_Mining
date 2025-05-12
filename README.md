@@ -104,6 +104,32 @@ Eval Loss: 0.89
 - Allowed fine-tuning of large models with lower computational cost
 
 ---
+---
+
+## 🆚 Baseline (No Fine-Tuning)
+
+The baseline DeBERTa model (without fine-tuning or LoRA) failed to generalize well to the ABSA task.
+
+- **Accuracy**: ~14%
+- **F1 Score (Macro)**: 0.04
+
+This demonstrates the importance of domain-specific fine-tuning and adaptation techniques like LoRA.
+
+---
+
+## 🏗️ Class Imbalance Handling
+
+The dataset exhibited **severe class imbalance**, especially in:
+
+- Low-frequency NER labels (e.g., `B-FEATURE`, `I-FEATURE`)
+- Sentiment classes (notably `neutral`)
+
+To address this, we computed class weights based on label frequency and used them in a **custom `Trainer` class**. The `CrossEntropyLoss` function was adapted to include these weights and improve learning from underrepresented labels.
+
+```python
+loss_fct = nn.CrossEntropyLoss(weight=all_class_weights, ignore_index=-100)
+loss = loss_fct(logits.view(-1, logits.shape[-1]), labels.view(-1))
+
 
 ## 🗃️ Repository Contents
 
