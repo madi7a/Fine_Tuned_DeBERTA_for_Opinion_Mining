@@ -1,6 +1,6 @@
-#Fine-Tuned DeBERTa for Opinion Mining from Customer Reviews
+##Fine-Tuned DeBERTa for Opinion Mining from Customer Reviews
 
-This project applies a fine-tuned DeBERTa model using LoRA (Low-Rank Adaptation) to perform **Aspect-Based Sentiment Analysis (ABSA)**. Specifically, it tackles two subtasks:
+**This project applies a fine-tuned DeBERTa model using LoRA (Low-Rank Adaptation) to perform **Aspect-Based Sentiment Analysis (ABSA)**. Specifically, it tackles two subtasks:**
 
 1. **Aspect Term Extraction** — identifying relevant features, colors, brands, and aspects from customer reviews using token classification.
 2. **Sentiment Classification** — determining the sentiment (positive, negative, neutral) associated with extracted aspects using sequence classification.
